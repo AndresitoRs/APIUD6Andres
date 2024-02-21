@@ -1,4 +1,7 @@
 package api.apiud6andres.repositorio;
 
-public interface PuntuacionRepositorio {
+import api.apiud6andres.modelo.Puntuacion;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PuntuacionRepositorio extends JpaRepository<Puntuacion,Long> {
 }
