@@ -1,6 +1,7 @@
 package api.apiud6andres.modelo;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity(name = "puntuacion")
 
@@ -9,6 +10,7 @@ public class Puntuacion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
+    @NotBlank(message = "El nombre del jugador no puede estar vacío")
     String nombreJugador;
 
     long puntuacion;

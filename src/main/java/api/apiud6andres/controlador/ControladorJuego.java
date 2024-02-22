@@ -30,7 +30,7 @@ public class ControladorJuego {
 
     //Crear Juego, con POST
     @PostMapping
-    public Juego crearJuego(@RequestBody Juego juego){
+    public Juego crearJuego(@RequestBody Juego juego) {
         return juegoRepositorio.save(juego);
     }
 
