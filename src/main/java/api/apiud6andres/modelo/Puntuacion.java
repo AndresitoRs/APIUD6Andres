@@ -21,9 +21,10 @@ public class Puntuacion {
 
     }
 
-    public Puntuacion(String nombreJugador, long puntuacion) {
+    public Puntuacion(String nombreJugador, long puntuacion, Juego juego) {
         this.nombreJugador = nombreJugador;
         this.puntuacion = puntuacion;
+        this.juego = juego;
     }
 
     public long getId() {
@@ -48,5 +49,13 @@ public class Puntuacion {
 
     public void setPuntuacion(long puntuacion) {
         this.puntuacion = puntuacion;
+    }
+
+    public Juego getJuego() {
+        return juego;
+    }
+
+    public void setJuego(Juego juego) {
+        this.juego = juego;
     }
 }

@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity(name = "juego")
 
@@ -11,10 +12,8 @@ public class Juego {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
+    @NotBlank(message = "El nombre no puede estar vacío")
     String nombre;
-
-    String puntuacion;
 
     public Juego(){
 
@@ -40,11 +39,4 @@ public class Juego {
         this.nombre = nombre;
     }
 
-    public String getPuntuacion() {
-        return puntuacion;
-    }
-
-    public void setPuntuacion(String puntuacion) {
-        this.puntuacion = puntuacion;
-    }
 }

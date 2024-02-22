@@ -36,9 +36,13 @@ public class ControladorPuntuacion {
     }
 
     //Crear Puntuacion, con POST
-    @PostMapping
-    public Puntuacion crearPuntuacion(@RequestBody Puntuacion puntuacion){
-        return puntuacionRepositorio.save(puntuacion);
+    @PostMapping("/juego/{id}")
+    public Puntuacion crearPuntuacion(@PathVariable long id,@RequestBody Puntuacion puntuacion){
+        Puntuacion puntuacionTempo = juegoRepositorio.findById(id).map(juego -> {
+            puntuacion.setJuego(juego);
+            return puntuacionRepositorio.save(puntuacion);
+        }).orElseThrow(() -> new RuntimeException("Juego no encontrado"));
+        return puntuacionTempo;
     }
 
     //actualizar  un recurso con PUT
