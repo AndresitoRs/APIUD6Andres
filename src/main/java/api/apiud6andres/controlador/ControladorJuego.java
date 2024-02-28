@@ -16,7 +16,7 @@ public class ControladorJuego {
 
     //Encontrar todos los juegos
     @GetMapping
-    public List<Juego> obtenerCategorias(){
+    public List<Juego> obtenerJuegos(){
         return juegoRepositorio.findAll();
     }
 
@@ -43,7 +43,7 @@ public class ControladorJuego {
         }).orElseThrow(()-> new RuntimeException("Juego no encontrado"));
     }
 
-    //Eliminar  una juego con DELETE
+    //Eliminar  un juego con DELETE
     @DeleteMapping("{id}")
     public void eliminarJuego(@PathVariable long id) {
         juegoRepositorio.deleteById(id);

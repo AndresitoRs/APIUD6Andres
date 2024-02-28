@@ -35,6 +35,14 @@ public class ControladorPuntuacion {
                 new RuntimeException("Puntuacion no encontrada"));
     }
 
+    //Todos las puntuaciones de una categoria
+    @GetMapping("/categoria/{id}")
+    public List<Puntuacion> obtenerPuntuacionesPorCategoria(@PathVariable Long id){
+        Optional<Juego> juego = juegoRepositorio.findById(id);
+        List<Puntuacion> resultado = puntuacionRepositorio.findAllByJuego(juego);
+        return resultado;
+    }
+
     //Crear Puntuacion, con POST
     @PostMapping("/juego/{id}")
     public Puntuacion crearPuntuacion(@PathVariable long id,@RequestBody Puntuacion puntuacion){
@@ -45,7 +53,7 @@ public class ControladorPuntuacion {
         return puntuacionTempo;
     }
 
-    //actualizar  un recurso con PUT
+    //actualizar  una puntuación con PUT
     @PutMapping("/{id}")
     public Puntuacion actualizarPuntuacion(@PathVariable long id, @RequestBody Puntuacion puntuacion){
         return puntuacionRepositorio.findById(id).map(puntuacionTempo -> {
@@ -55,7 +63,7 @@ public class ControladorPuntuacion {
         }).orElseThrow(()-> new RuntimeException("Puntuación no encontrada"));
     }
 
-    //Eliminar  un recurso con DELETE
+    //Eliminar  una puntuación con DELETE
     @DeleteMapping("{id}")
     public void eliminarPuntuacion(@PathVariable long id) {
         puntuacionRepositorio.deleteById(id);
